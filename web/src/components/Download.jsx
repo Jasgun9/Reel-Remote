@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+﻿import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { revealOnScroll } from '../lib/reveal'
 import { builds, links } from '../config'
@@ -26,7 +26,7 @@ export default function Download() {
     <section className="section download" id="download" ref={root}>
       <div className="container download__inner">
         <div className="download__head">
-          <p className="eyebrow js-reveal" data-index="03">
+          <p className="eyebrow js-reveal" data-index="04">
             Get it
           </p>
           <h2 className="section-title js-reveal">Two pieces. One local network.</h2>

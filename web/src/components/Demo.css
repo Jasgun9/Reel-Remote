@@ -1,0 +1,241 @@
+/* Copy on the left, the working device and pad on the right. */
+.demo__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.demo__head {
+  max-width: 38ch;
+}
+
+.demo__lede {
+  margin-top: 14px;
+}
+
+.demo__stage {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 36px);
+}
+
+/* ---- phone ---- */
+
+.demo__phone {
+  flex: 0 0 auto;
+  width: clamp(168px, 15vw, 196px);
+}
+
+.demo__screen {
+  position: relative;
+  /* A stylised device rather than a reproduction of the real screenshot, so a
+     standard 9:16 keeps the section from becoming absurdly tall. */
+  aspect-ratio: 9 / 16;
+  border-radius: 17px;
+  overflow: hidden;
+  background: #101015;
+}
+
+.demo__strip {
+  height: 100%;
+  will-change: transform;
+}
+
+.demo__reel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 2px;
+  height: 100%;
+  padding: 18px;
+  color: #fff;
+}
+
+/* Three tints cycled so consecutive reels are visibly different. */
+.demo__reel[data-tint='0'] {
+  background: linear-gradient(160deg, #4a3a7a, #191824);
+}
+.demo__reel[data-tint='1'] {
+  background: linear-gradient(160deg, #2f4a63, #161a22);
+}
+.demo__reel[data-tint='2'] {
+  background: linear-gradient(160deg, #5a3f63, #1b1620);
+}
+
+.demo__reel-index {
+  font: 500 34px/1 var(--mono);
+  letter-spacing: -0.03em;
+  opacity: 0.92;
+}
+
+.demo__reel-note {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.demo__paused {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 9, 13, 0.42);
+  color: #fff;
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.demo__progress {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+}
+
+.demo__progress-bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  border-radius: inherit;
+  background: #fff;
+  animation: demo-progress 7s linear forwards;
+}
+
+.demo__progress-bar[data-paused='true'] {
+  animation-play-state: paused;
+}
+
+@keyframes demo-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo__progress-bar {
+    animation: none;
+    transform: scaleX(0.35);
+  }
+}
+
+/* ---- remote ---- */
+
+.demo__remote {
+  flex: 0 0 auto;
+  width: 208px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  box-shadow:
+    0 1px 2px rgba(22, 21, 26, 0.05),
+    0 14px 34px -18px rgba(22, 21, 26, 0.3);
+}
+
+.demo__remote-title {
+  margin-bottom: 12px;
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.demo__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 11px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  font: 500 14px/1 var(--sans);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background-color 0.18s var(--ease),
+    border-color 0.18s var(--ease),
+    transform 0.18s var(--ease);
+}
+
+.demo__btn:hover:not(:disabled) {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.demo__btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.demo__btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.demo__log {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font: 500 12px/1.5 var(--mono);
+  color: var(--accent);
+  min-height: 18px;
+}
+
+.demo__count {
+  margin-top: 2px;
+  font: 400 12px/1.5 var(--mono);
+  color: var(--text-3);
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 940px) {
+  .demo__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .demo__head {
+    max-width: 52ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .demo__stage {
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .demo__phone {
+    width: clamp(140px, 38vw, 190px);
+  }
+  .demo__remote {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .demo__stage {
+    gap: 14px;
+  }
+  .demo__remote {
+    padding: 12px;
+  }
+  .demo__btn {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+}

@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Intro from './components/Intro'
 import Features from './components/Features'
+import Demo from './components/Demo'
 import Showcase from './components/Showcase'
 import Download from './components/Download'
 import Footer from './components/Footer'
@@ -14,6 +15,7 @@ export default function App() {
         <Hero />
         <Intro />
         <Features />
+        <Demo />
         <Showcase />
         <Download />
       </main>

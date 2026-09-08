@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+﻿import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import phoneImg from '../assets/phone.png'
 import controllerImg from '../assets/controller.png'
@@ -22,7 +22,7 @@ export default function Showcase() {
     <section className="section showcase" id="showcase" ref={root}>
       <div className="container">
         <div className="showcase__head">
-          <p className="eyebrow js-reveal" data-index="02">
+          <p className="eyebrow js-reveal" data-index="03">
             Screenshots
           </p>
           <h2 className="section-title js-reveal">Both halves, as they actually look.</h2>
