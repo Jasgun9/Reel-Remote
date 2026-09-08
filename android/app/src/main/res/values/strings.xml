@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reel Remote</string>
+    <string name="app_tagline">Receives NEXT / PREVIOUS / PLAY_PAUSE from your laptop over Wi-Fi and performs the matching swipe or tap.</string>
+
+    <string name="accessibility_service_label">Reel Remote gestures</string>
+    <string name="accessibility_service_summary">Performs swipe/tap gestures requested by your paired laptop.</string>
+    <string name="accessibility_service_description">Reel Remote uses this service only to perform three gestures — swipe up, swipe down and a single tap — when your paired laptop asks for them. It does not read screen content and does not collect any data.</string>
+
+    <string name="section_accessibility">1. Accessibility service</string>
+    <string name="section_server">2. Local server</string>
+    <string name="section_token">3. Pairing token</string>
+    <string name="section_gestures">4. Gesture geometry</string>
+    <string name="section_log">5. Activity log</string>
+
+    <string name="accessibility_hint">Android only lets an app perform touch gestures through an accessibility service. Turn on “Reel Remote gestures” under Installed apps / Downloaded apps.</string>
+    <string name="btn_open_accessibility_settings">Open accessibility settings</string>
+
+    <string name="status_accessibility_on">Accessibility service: ENABLED</string>
+    <string name="status_accessibility_off">Accessibility service: DISABLED</string>
+    <string name="status_server_on">Server: RUNNING</string>
+    <string name="status_server_off">Server: STOPPED</string>
+
+    <string name="label_port">Port</string>
+    <string name="hint_port">8787</string>
+    <string name="btn_start_server">Start server</string>
+    <string name="btn_stop_server">Stop server</string>
+
+    <string name="token_hint">Type this into the laptop controller. Anyone on your Wi-Fi who knows it can send the three commands, so treat it like a password. Regenerating it immediately locks out the old one.</string>
+    <string name="btn_copy_token">Copy token</string>
+    <string name="btn_regenerate_token">Regenerate</string>
+    <string name="copied">Copied to clipboard</string>
+
+    <string name="gestures_hint">All values are percentages of the screen, so they work on any resolution. NEXT swipes from “Start Y” up to “End Y”; PREVIOUS is the reverse.</string>
+    <string name="cb_require_foreground">Only act while Instagram is the foreground app</string>
+    <string name="label_swipe_x">Swipe X %</string>
+    <string name="label_start_y">Start Y %</string>
+    <string name="label_end_y">End Y %</string>
+    <string name="label_duration">Swipe ms</string>
+    <string name="label_tap_x">Tap X %</string>
+    <string name="label_tap_y">Tap Y %</string>
+    <string name="hint_percent">0-100</string>
+    <string name="hint_ms">ms</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_reset_defaults">Reset defaults</string>
+    <string name="saved">Settings saved</string>
+
+    <string name="btn_clear_log">Clear log</string>
+    <string name="no_wifi">No Wi-Fi address — connect the phone to your Wi-Fi network</string>
+    <string name="needs_accessibility_first">Enable the accessibility service before starting the server.</string>
+    <string name="privacy_note">This app never reads screen content, never talks to the internet, and only ever performs the three gestures listed above.</string>
+</resources>

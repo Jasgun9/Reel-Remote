@@ -1,0 +1,22 @@
+# HTTP client used to talk to the phone. Nothing here reaches the internet.
+requests>=2.31.0
+
+# Global (system-wide) keyboard hooks.
+#
+# Why this package: Tkinter can only see key presses while its own window has
+# focus. `keyboard` installs a low-level Windows keyboard hook (WH_KEYBOARD_LL),
+# which is the only way to react to Up/Down/Space while you are looking at
+# something else on the laptop. It also supports `suppress=True`, so the keys do
+# not leak into whatever app is actually focused.
+#
+# It is OPTIONAL: if it is missing, the controller still runs and the hotkeys
+# work whenever the controller window is focused.
+#
+# Caveats: some antivirus tools flag low-level keyboard hooks, and a few
+# systems require running the controller as Administrator.
+keyboard>=0.13.5
+
+# NOTE: there is deliberately no mouse package here. Alt+Shift+wheel is handled
+# by a raw WH_MOUSE_LL hook through ctypes (stdlib), because the available
+# Python mouse libraries cannot suppress an event - without suppression the page
+# under the cursor would scroll at the same time as the Reel advances.
