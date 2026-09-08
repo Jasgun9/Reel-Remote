@@ -1,0 +1,98 @@
+.showcase {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--line);
+}
+
+.showcase__head {
+  max-width: 34ch;
+  margin-bottom: clamp(36px, 4.5vw, 60px);
+}
+
+.showcase__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.showcase__col {
+  margin: 0;
+  min-width: 0;
+}
+
+.showcase__col--phone {
+  justify-self: center;
+  width: 100%;
+  max-width: 268px;
+}
+
+/* The window screenshot needs headroom for the mini remote to sit over it. */
+.showcase__winwrap {
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.showcase__win {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  box-shadow:
+    0 1px 2px rgba(22, 21, 26, 0.05),
+    0 20px 46px -20px rgba(22, 21, 26, 0.3);
+}
+
+.showcase__mini {
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  width: clamp(96px, 11vw, 128px);
+  height: auto;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  box-shadow: 0 12px 30px -10px rgba(22, 21, 26, 0.4);
+}
+
+.showcase__col figcaption {
+  margin-top: 18px;
+  max-width: 46ch;
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.showcase__label {
+  display: block;
+  margin-bottom: 5px;
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .showcase__stage {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .showcase__col--phone {
+    justify-self: start;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .showcase__col--phone {
+    justify-self: center;
+    max-width: 210px;
+  }
+  .showcase__winwrap {
+    padding-bottom: 18px;
+  }
+  /* Keep the mini fully inside the viewport on small screens. */
+  .showcase__mini {
+    right: 0;
+    width: 86px;
+  }
+}

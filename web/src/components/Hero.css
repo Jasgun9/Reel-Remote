@@ -1,0 +1,191 @@
+.hero {
+  padding-block: clamp(40px, 6vw, 76px) clamp(56px, 7vw, 96px);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: center;
+}
+
+/* ---- copy ---- */
+
+.hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 9px;
+  margin-bottom: 22px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font: 500 11.5px/1 var(--mono);
+  color: var(--text-2);
+}
+
+.hero__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2e9e57;
+}
+
+.hero__title {
+  font-size: clamp(32px, 3.9vw, 54px);
+  letter-spacing: -0.035em;
+}
+
+.hero__sub {
+  max-width: 40ch;
+  margin-top: 18px;
+  color: var(--text-2);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.6;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* Compact single row rather than a tall definition grid. */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  margin: 34px 0 0;
+  padding: 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.hero__meta li {
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+.hero__meta span {
+  display: block;
+  margin-bottom: 4px;
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ---- product composition ---- */
+
+.hero__stage {
+  position: relative;
+  /* Left padding is what keeps the phone overlapping only the window's corner
+     instead of covering its controls; it must exceed most of the phone width. */
+  padding: 0 0 30px clamp(80px, 8.2vw, 116px);
+}
+
+/* controller.png carries its own real Windows title bar, so it needs a hairline
+   and a soft shadow rather than invented chrome. */
+.hero__win {
+  margin: 0;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--card);
+  box-shadow:
+    0 1px 2px rgba(22, 21, 26, 0.05),
+    0 18px 44px -18px rgba(22, 21, 26, 0.28);
+}
+
+.hero__win img {
+  width: 100%;
+  height: auto;
+}
+
+.hero__phone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(92px, 8.5vw, 120px);
+  margin: 0;
+}
+
+/* Shared Android frame, also used in the showcase. */
+.device {
+  padding: 6px;
+  border: 1px solid var(--line-2);
+  border-radius: 22px;
+  background: #fbfaf9;
+  box-shadow:
+    0 1px 2px rgba(22, 21, 26, 0.06),
+    0 20px 40px -20px rgba(22, 21, 26, 0.34);
+}
+
+.device--sm {
+  padding: 5px;
+  border-radius: 17px;
+}
+
+.device__screen {
+  border-radius: 17px;
+  overflow: hidden;
+  background: #000;
+}
+
+.device--sm .device__screen {
+  border-radius: 13px;
+}
+
+.device__screen img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---- tablet ---- */
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero__sub {
+    max-width: 52ch;
+  }
+  .hero__stage {
+    padding-left: clamp(64px, 9vw, 100px);
+    max-width: 620px;
+  }
+}
+
+/* ---- mobile: no overlap, the phone sits beside the window ---- */
+@media (max-width: 560px) {
+  .hero__stage {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 0;
+    max-width: none;
+  }
+  .hero__win {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .hero__phone {
+    position: static;
+    flex: 0 0 84px;
+    width: 84px;
+  }
+  .hero__meta {
+    gap: 14px 22px;
+  }
+  .hero__actions .btn {
+    flex: 1 1 140px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero__phone {
+    display: none;
+  }
+}

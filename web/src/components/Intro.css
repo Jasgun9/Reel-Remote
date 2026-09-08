@@ -1,0 +1,43 @@
+.intro {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--line);
+}
+
+.intro__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 80px);
+  align-items: start;
+}
+
+.intro__statement {
+  font-size: clamp(21px, 2.7vw, 34px);
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+/* The clause that carries the point stays full strength; the setup recedes. */
+.intro__statement span {
+  color: var(--text-3);
+}
+
+.intro__note {
+  max-width: 44ch;
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+@media (max-width: 860px) {
+  .intro__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .intro__note {
+    max-width: 60ch;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+}

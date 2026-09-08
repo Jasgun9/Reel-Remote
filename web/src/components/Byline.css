@@ -1,0 +1,51 @@
+.byline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-block: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.byline strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.byline nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.byline nav a {
+  color: var(--text-2);
+  transition: color 0.2s var(--ease);
+}
+
+.byline nav a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .byline {
+    padding-block: 20px;
+    font-size: 14px;
+  }
+
+  .byline nav {
+    gap: 18px;
+  }
+}
+
+/* Below this the name and three links no longer share a row comfortably. */
+@media (max-width: 420px) {
+  .byline {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,127 @@
+.download__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.download__head {
+  max-width: 34ch;
+}
+
+.download__lede {
+  margin-top: 14px;
+}
+
+.download__targets {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The whole row is the link, so the hit area matches what looks clickable. */
+.target {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'label arrow'
+    'file arrow'
+    'meta arrow';
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card);
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.target:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-line);
+  box-shadow: 0 8px 24px -12px rgba(22, 21, 26, 0.28);
+}
+
+.target__label {
+  grid-area: label;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.target__file {
+  grid-area: file;
+  margin-top: 8px;
+  font: 500 13px/1.4 var(--mono);
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+
+.target__meta {
+  grid-area: meta;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+.target__arrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 14px;
+  transition:
+    transform 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.target:hover .target__arrow {
+  transform: translateY(2px);
+  background: var(--accent);
+  color: #fff;
+}
+
+.download__source {
+  grid-column: 2;
+  margin-top: 18px;
+  color: var(--text-3);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.download__source a {
+  color: var(--accent);
+  transition: color 0.18s var(--ease);
+}
+
+.download__source a:hover {
+  color: var(--accent-hover);
+}
+
+@media (max-width: 860px) {
+  .download__inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .download__head {
+    max-width: 52ch;
+  }
+  .download__source {
+    grid-column: 1;
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 861px) {
+  .download__targets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
