@@ -1,4 +1,4 @@
-package com.example.reelremote
+package me.jasgun.reelremote
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

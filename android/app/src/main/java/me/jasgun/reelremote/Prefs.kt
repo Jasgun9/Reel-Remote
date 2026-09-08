@@ -1,4 +1,4 @@
-package com.example.reelremote
+package me.jasgun.reelremote
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.reelremote"
+    namespace = "me.jasgun.reelremote"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.reelremote"
+        applicationId = "me.jasgun.reelremote"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

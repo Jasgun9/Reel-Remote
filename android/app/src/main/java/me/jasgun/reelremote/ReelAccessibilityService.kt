@@ -1,4 +1,4 @@
-package com.example.reelremote
+package me.jasgun.reelremote
 
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.GestureDescription
@@ -16,9 +16,9 @@ import android.util.Log
 import android.view.Display
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
-import com.example.reelremote.net.CommandHandler
-import com.example.reelremote.net.CommandOutcome
-import com.example.reelremote.net.CommandServer
+import me.jasgun.reelremote.net.CommandHandler
+import me.jasgun.reelremote.net.CommandOutcome
+import me.jasgun.reelremote.net.CommandServer
 import org.json.JSONObject
 import java.io.IOException
 import java.net.BindException

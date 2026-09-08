@@ -1,4 +1,4 @@
-package com.example.reelremote
+package me.jasgun.reelremote
 
 import android.content.ActivityNotFoundException
 import android.content.ClipData
@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.reelremote.databinding.ActivityMainBinding
+import me.jasgun.reelremote.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date

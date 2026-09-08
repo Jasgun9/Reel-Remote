@@ -1,7 +1,7 @@
-package com.example.reelremote.net
+package me.jasgun.reelremote.net
 
 import android.util.Log
-import com.example.reelremote.NetUtils
+import me.jasgun.reelremote.NetUtils
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedInputStream

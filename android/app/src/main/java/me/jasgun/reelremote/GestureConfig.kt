@@ -1,4 +1,4 @@
-package com.example.reelremote
+package me.jasgun.reelremote
 
 /**
  * Gesture geometry expressed as percentages of the current screen size, so the same
