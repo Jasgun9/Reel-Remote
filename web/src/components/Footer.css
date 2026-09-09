@@ -16,7 +16,6 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  --mark-size: 34px;
 }
 
 .site-footer__name {

@@ -1,3 +1,4 @@
+import BrandMark from './BrandMark'
 import Byline from './Byline'
 import './Footer.css'
 
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="container">
         <div className="site-footer__top">
           <a className="site-footer__brand" href="#top">
-            <span className="brand-mark" aria-hidden="true" />
+            <BrandMark size={34} />
             <span className="site-footer__name">
               <span className="site-footer__name-accent">Reel</span> Remote
             </span>

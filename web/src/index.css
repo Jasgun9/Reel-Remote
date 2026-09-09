@@ -183,39 +183,10 @@ a {
   transform: translateY(-1px);
 }
 
-/* Logo mark: an up chevron over a bar, echoing the Android launcher icon.
-   Sized by --mark-size so the navbar and footer can share one definition. */
+/* The mark itself is the real launcher icon, drawn by <BrandMark />. */
 .brand-mark {
-  position: relative;
   flex: none;
-  width: 1em;
-  height: 1em;
-  font-size: var(--mark-size, 20px);
-  border-radius: 0.25em;
-  background: var(--accent);
-}
-
-.brand-mark::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 0;
-  height: 0;
-  transform: translateY(-0.125em);
-  border: 0.225em solid transparent;
-  border-bottom-color: #fff;
-}
-
-.brand-mark::after {
-  content: '';
-  position: absolute;
-  left: 0.275em;
-  right: 0.275em;
-  bottom: 0.225em;
-  height: 0.1em;
-  border-radius: 0.05em;
-  background: #fff;
+  display: block;
 }
 
 /* Hidden until GSAP reveals them, but only when scripting is available so a

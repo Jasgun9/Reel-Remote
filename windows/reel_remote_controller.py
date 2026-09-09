@@ -95,6 +95,12 @@ CONFIG_DIR = os.path.join(
 )
 CONFIG_PATH = os.path.join(CONFIG_DIR, "controller.json")
 
+# PyInstaller unpacks bundled data to _MEIPASS; running from source it is just
+# the directory this file lives in.
+ASSET_DIR = os.path.join(
+    getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__))), "assets"
+)
+
 # Global hotkey presets.
 #
 # Modifier combos are the default because they need no key suppression: nobody
@@ -436,6 +442,7 @@ class ControllerApp(tk.Tk):
         super().__init__()
         self.title(APP_TITLE)
         self.resizable(False, False)
+        self._apply_icon()
 
         self.client = PhoneClient()
         self.connected = False
@@ -510,6 +517,27 @@ class ControllerApp(tk.Tk):
             self.on_topmost_toggled()
         if self._wanted_mini:
             self.open_mini_remote()
+
+    def _apply_icon(self) -> None:
+        """
+        Window and taskbar icon, the same mark as the Android launcher.
+
+        iconbitmap(default=...) applies to every toplevel this app opens, so the
+        mini remote picks it up too. Missing or unreadable assets are ignored —
+        an icon is never worth failing to start over.
+        """
+        ico = os.path.join(ASSET_DIR, "reelremote.ico")
+        png = os.path.join(ASSET_DIR, "reelremote.png")
+        try:
+            if IS_WINDOWS and os.path.exists(ico):
+                self.iconbitmap(default=ico)
+                return
+            if os.path.exists(png):
+                # Tk drops the image unless a reference outlives this call.
+                self._icon = tk.PhotoImage(file=png)
+                self.iconphoto(True, self._icon)
+        except tk.TclError:
+            pass
 
     # --- layout ------------------------------------------------------------- #
 

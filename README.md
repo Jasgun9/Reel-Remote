@@ -90,11 +90,88 @@ Or from a terminal:
 
 ```bash
 cd android
-./gradlew assembleDebug
+./gradlew assembleDebug     # app/build/outputs/apk/debug/app-debug.apk
 ```
 
-The APK lands at `android/app/build/outputs/apk/debug/app-debug.apk`. Install it
-over USB with `adb install -r <path>`, or copy it to the phone and open it.
+Install it over USB with `adb install -r <path>`, or copy it to the phone and
+open it — but read **[Installing on Android](#installing-on-android)** first,
+because Android will fight you.
+
+### Release builds
+
+`./gradlew assembleRelease` produces the signed APK that ships on the releases
+page. Signing reads `android/keystore.properties`, which is **not** in version
+control:
+
+```properties
+storeFile=keystore/reelremote.jks
+storePassword=…
+keyAlias=reelremote
+keyPassword=…
+```
+
+Without that file the release build still succeeds, it just produces an unsigned
+APK that Android will refuse to install. The keystore is the app's identity — if
+it is lost, no future build can update an already-installed copy, so keep a
+backup somewhere other than this machine.
+
+---
+
+## Installing on Android
+
+Android blocks this app on install, and then blocks the permission it needs
+afterwards. Both are expected. Neither means the download is broken.
+
+**Why.** The app performs swipes through an `AccessibilityService` — the only
+API Android provides for synthesising a touch. It is also the API banking
+trojans and stalkerware abuse, so Play Protect blocks *any* sideloaded app that
+requests it, whatever the app actually does. Signing does not change this;
+nothing short of shipping through the Play Store does. For reference, Reel
+Remote requests exactly two permissions, `INTERNET` and `ACCESS_NETWORK_STATE`,
+and its service declares `canRetrieveWindowContent="false"` so it cannot read
+your screen.
+
+### 1. Get past the install block
+
+You will see **"App blocked to protect your device"**.
+
+**If there is an "Install anyway" option:** tap *More details* → *Install
+anyway*. Done.
+
+**If there is no way through at all**, your manufacturer is blocking it, not
+Google. Turn the relevant one off, install, then turn it back on:
+
+| Phone | Setting |
+|---|---|
+| Samsung (One UI 6.1+) | Settings → Security and privacy → **Auto Blocker** → off |
+| Xiaomi / Redmi / POCO | Settings → Privacy protection → Special permissions → Install unknown apps. Some builds also need **MIUI optimization** off in Developer options |
+| Realme / Oppo / Vivo | Settings → Additional settings → Install unknown apps, and disable *Payment protection* / *App verification* |
+| Any phone | Play Store → your avatar → **Play Protect** → ⚙ → *Scan apps with Play Protect* off |
+
+**Or bypass all of it over USB.** ADB does not use the Play Store installer, so
+none of the above applies:
+
+```bash
+# Settings → About phone → tap "Build number" seven times
+# Settings → System → Developer options → USB debugging → on
+adb install -r ReelRemote.apk
+```
+
+### 2. Allow the accessibility service
+
+On Android 13 and newer the accessibility toggle is greyed out for sideloaded
+apps until you unlock it. This is *Restricted Settings*, a separate mechanism
+from the install block:
+
+**Settings → Apps → Reel Remote → ⋮ (top right) → Allow restricted settings**
+
+Then **Settings → Accessibility → Reel Remote gestures → On**.
+
+Skip this step and the app installs perfectly, opens perfectly, and does
+nothing — with no error to explain why. It is the single most common reason
+people give up.
+
+---
 
 ## Run the controller
 
@@ -114,8 +191,14 @@ To build a standalone executable:
 ```bash
 pip install pyinstaller
 pyinstaller --noconfirm --onefile --windowed --name ReelRemote \
+            --icon assets/reelremote.ico \
+            --add-data "assets;assets" \
             --hidden-import keyboard reel_remote_controller.py
 ```
+
+`--icon` sets the icon on the executable itself; `--add-data` bundles the same
+file so the running window and the mini remote show it too. On Linux or macOS the
+`--add-data` separator is `:` rather than `;`.
 
 ---
 
@@ -123,7 +206,8 @@ pyinstaller --noconfirm --onefile --windowed --name ReelRemote \
 
 1. Open the app on the phone and tap **Open accessibility settings**. Turn on
    **Reel Remote gestures**. Android has no other way to let an app perform a
-   touch gesture.
+   touch gesture. If the toggle is greyed out, you still need
+   [Allow restricted settings](#2-allow-the-accessibility-service).
 2. Back in the app, press **Start server**. It shows the phone's IP, the port and
    a sixteen-character pairing token.
 3. Type all three into the controller and press **Connect**. The dot turns green.

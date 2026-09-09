@@ -20,6 +20,10 @@ captures/
 .vscode/
 *.swp
 
+# --- Release artefacts (upload to GitHub Releases, don't commit) ---
+release/
+docs/showdemo.mpg4
+
 # --- OS ---
 Thumbs.db
 desktop.ini

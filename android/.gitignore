@@ -9,3 +9,10 @@
 .cxx
 local.properties
 app/build/
+
+# Release signing material. The keystore IS the app's identity — losing it means
+# no future build can update an installed copy. Back it up somewhere safe.
+keystore/
+keystore.properties
+*.jks
+*.keystore

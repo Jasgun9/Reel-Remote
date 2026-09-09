@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import BrandMark from './BrandMark'
 import { links } from '../config'
 import './Navbar.css'
 
@@ -16,7 +17,7 @@ export default function Navbar() {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
         <a className="nav__brand" href="#top">
-          <span className="brand-mark" aria-hidden="true" />
+          <BrandMark size={20} />
           Reel Remote
         </a>
 

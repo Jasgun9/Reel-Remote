@@ -8,6 +8,32 @@
   margin-bottom: clamp(36px, 4.5vw, 60px);
 }
 
+/* The real recording leads the section; the static shots sit beneath it. */
+.showcase__clip {
+  margin: 0 0 clamp(40px, 5vw, 64px);
+}
+
+.showcase__clip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-lg);
+  background: #14131a;
+  box-shadow:
+    0 1px 2px rgba(22, 21, 26, 0.05),
+    0 22px 50px -22px rgba(22, 21, 26, 0.32);
+}
+
+.showcase__clip figcaption {
+  margin-top: 14px;
+  max-width: 60ch;
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
 .showcase__stage {
   display: grid;
   grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);

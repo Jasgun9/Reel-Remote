@@ -1,7 +1,9 @@
 .download__inner {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 72px);
+  /* Wide gutter between the columns, tight stack down the right-hand one. */
+  column-gap: clamp(28px, 5vw, 72px);
+  row-gap: 16px;
   align-items: start;
 }
 
@@ -89,8 +91,51 @@
   color: #fff;
 }
 
+/* Right-hand column: cards, then the advisory, then the source line. Grouping
+   them means the tall left column cannot stretch rows between them. */
+.download__col {
+  min-width: 0;
+}
+
+/* Advisory, not an error — bordered and tinted rather than shouted. */
+.download__heads-up {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-md);
+  background: var(--accent-soft);
+}
+
+.download__heads-up-title {
+  margin-bottom: 5px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.download__heads-up p:last-child {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-2);
+}
+
+.download__heads-up em {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.download__heads-up a {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.download__heads-up a:hover {
+  color: var(--accent-hover);
+}
+
 .download__source {
-  grid-column: 2;
   margin-top: 18px;
   color: var(--text-3);
   font-size: 13.5px;
@@ -109,14 +154,13 @@
 @media (max-width: 860px) {
   .download__inner {
     grid-template-columns: 1fr;
-    gap: 30px;
+    row-gap: 22px;
   }
   .download__head {
     max-width: 52ch;
   }
   .download__source {
-    grid-column: 1;
-    margin-top: 4px;
+    margin-top: 16px;
   }
 }
 

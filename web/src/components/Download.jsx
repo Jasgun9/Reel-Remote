@@ -36,7 +36,8 @@ export default function Download() {
           </p>
         </div>
 
-        <ul className="download__targets">
+        <div className="download__col">
+          <ul className="download__targets">
           {TARGETS.map((t) => (
             <li key={t.label}>
               <a className="target js-reveal" href={t.href}>
@@ -53,10 +54,24 @@ export default function Download() {
           ))}
         </ul>
 
-        <p className="download__source js-reveal">
-          Prefer to build it yourself? The repository has the Android Studio project and
-          the Python controller. <a href={links.source}>View the source →</a>
-        </p>
+        {/* Everyone installing the APK hits these two dialogs. Saying so up
+            front is the difference between "broken" and "expected". */}
+        <div className="download__heads-up js-reveal">
+          <p className="download__heads-up-title">Android will warn you twice</p>
+          <p>
+            Play Protect blocks any sideloaded app that uses an accessibility service —
+            the only API Android gives for performing a swipe. Tap <em>More details →
+            Install anyway</em>. Then, on Android 13+, unlock the permission under{' '}
+            <em>Settings → Apps → Reel Remote → ⋮ → Allow restricted settings</em>.{' '}
+            <a href={`${links.source}#installing-on-android`}>Full walkthrough →</a>
+          </p>
+        </div>
+
+          <p className="download__source js-reveal">
+            Prefer to build it yourself? The repository has the Android Studio project
+            and the Python controller. <a href={links.source}>View the source →</a>
+          </p>
+        </div>
       </div>
     </section>
   )

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import controllerImg from '../assets/controller.png'
-import phoneImg from '../assets/phone.png'
+import phoneImg from '../assets/phone.webp'
 import { prefersReducedMotion } from '../lib/reveal'
 import './Hero.css'
 
@@ -98,8 +98,8 @@ export default function Hero() {
                 <img
                   src={phoneImg}
                   alt="The Reel Remote Android app showing the running server, its address and the pairing token."
-                  width="1080"
-                  height="2284"
+                  width="720"
+                  height="1523"
                   loading="eager"
                 />
               </div>

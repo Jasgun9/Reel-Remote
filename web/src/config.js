@@ -1,23 +1,19 @@
-/**
- * External links.
- *
- * The repository has no git remote configured yet and there is no published
- * release, so these are deliberate placeholders rather than invented URLs.
- * Replace the three strings below once the repo and release exist — nothing
- * else in the site needs changing.
- */
-const PLACEHOLDER = '#'
+const REPO = 'https://github.com/Jasgun9/Reel-Remote'
 
+/**
+ * The download links use GitHub's `releases/latest/download/<asset>` form, which
+ * resolves to whatever the newest release is — so publishing a new version does
+ * not require touching this file. The asset filenames must stay exactly
+ * ReelRemote.apk and ReelRemote.exe.
+ */
 export const links = {
-  source: PLACEHOLDER,
-  downloadWindows: PLACEHOLDER,
-  downloadAndroid: PLACEHOLDER,
+  source: REPO,
+  downloadWindows: `${REPO}/releases/latest/download/ReelRemote.exe`,
+  downloadAndroid: `${REPO}/releases/latest/download/ReelRemote.apk`,
+  releases: `${REPO}/releases`,
 }
 
-/** True while a link is still an unreplaced placeholder. */
-export const isPlaceholder = (href) => href === PLACEHOLDER
-
-/** Author links. These are real, unlike the release placeholders above. */
+/** Author links. */
 export const author = {
   name: 'Jasgun Singh',
   portfolio: 'https://jasgun.me',
@@ -25,8 +21,8 @@ export const author = {
   chai: 'https://buymeachai.ezee.li/Jasgunsingh',
 }
 
-/** Build facts, measured from the actual artefacts in this repo. */
+/** Build facts, measured from the actual signed artefacts in this repo. */
 export const builds = {
   windows: { label: 'Windows', file: 'ReelRemote.exe', size: '14.6 MB', req: 'Windows 10 or 11' },
-  android: { label: 'Android', file: 'app-debug.apk', size: '5.5 MB', req: 'Android 8.0+' },
+  android: { label: 'Android', file: 'ReelRemote.apk', size: '4.5 MB', req: 'Android 8.0+' },
 }
